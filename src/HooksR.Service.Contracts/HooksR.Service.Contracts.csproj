@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HooksR.DTO\HooksR.DTO.csproj" />
+    <ProjectReference Include="..\HooksR.Entities\HooksR.Entities.csproj" />
+    <ProjectReference Include="..\HooksR.Events\HooksR.Events.csproj" />
+  </ItemGroup>
+
+</Project>

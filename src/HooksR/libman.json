@@ -1,0 +1,28 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+
+    {
+      "provider": "unpkg",
+      "library": "@microsoft/signalr@latest",
+      "destination": "wwwroot/js/signalr/",
+      "files": [
+        "dist/browser/signalr.js",
+        "dist/browser/signalr.min.js"
+      ]
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "angular@1.7.8",
+      "destination": "wwwroot/lib/angular/",
+      "files": [
+        "angular.js",
+        "angular.min.js",
+        "index.js",
+        "index.min.js",
+        "bower.json"
+      ]
+    }
+  ]
+}
