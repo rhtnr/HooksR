@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 
 namespace HooksR.Entities
 {
@@ -12,6 +13,10 @@ namespace HooksR.Entities
     public String Scheme { get; set;}
 
     public String Host { get; set; }
+
+    public IPAddress Source { get; set; }
+
+    public DateTime TimeStamp { get; set; }
      
   }
 }

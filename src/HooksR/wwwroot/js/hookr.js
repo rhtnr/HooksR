@@ -1,6 +1,10 @@
+
+
 "use strict";
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/hookhub").build();
+
+
 
 /*
 $.connection.hub.disconnected(function() {
@@ -12,16 +16,22 @@ $.connection.hub.disconnected(function() {
 
 */
 
-connection.on("uireceive", function (message) {
-  console.log(message);
-  var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-  var encodedMsg = user + " says " + msg;
-  var li = document.createElement("li");
-  li.textContent = encodedMsg;
-  document.getElementById("messagesList").appendChild(li);
+
+
+connection.on("uireceive", function (uipushrequest) {
+  console.log(uipushrequest);
+  change(uipushrequest);
 });
 
 connection.start().then(function () {
 }).catch(function (err) {
   return console.error(err.toString());
 });
+
+function change(uipushrequest) {
+  var scope = angular.element($("#controller")).scope();
+  scope.$apply(function () {
+    scope.Message = 'Superhero';
+    scope.requests.unshift(uipushrequest);
+  });
+}

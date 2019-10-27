@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace HooksR.Controllers
 {
-  [Route("api/[controller]")]
+  [Route("[controller]")]
   [ApiController]
   public class BinController : ControllerBase
   {
@@ -26,22 +26,23 @@ namespace HooksR.Controllers
       _hubContext = hubContext;
       _hubService = hubService;
       _mapper = mapper;
-    } 
-    // GET: api/Bin
+    }
+    
+
     [HttpGet]
-      public IEnumerable<string> Get()
+    public IEnumerable<string> Get()
     {
       return new string[] { "value1", "value2" };
     }
 
-    // GET: api/Bin/5
+    
     [HttpGet("{id}", Name = "Get")]
     public string Get(int id)
     {
       return "value";
     }
 
-    // POST: api/Bin
+   
     [HttpPost]
     public IActionResult Post()
     {
@@ -50,13 +51,12 @@ namespace HooksR.Controllers
       return Ok();
     }
 
-    // PUT: api/Bin/5
+
     [HttpPut("{id}")]
     public void Put(int id, [FromBody] string value)
     {
     }
 
-    // DELETE: api/ApiWithActions/5
     [HttpDelete("{id}")]
     public void Delete(int id)
     {

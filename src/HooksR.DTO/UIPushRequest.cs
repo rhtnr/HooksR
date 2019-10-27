@@ -13,5 +13,8 @@ namespace HooksR.DTO
     public String Scheme { get; set; }
 
     public String Host { get; set; }
+
+    public String Source { get; set; }
+    public DateTime TimeStamp { get; set; }
   }
 }

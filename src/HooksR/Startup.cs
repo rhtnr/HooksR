@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using HooksR.Options.Utils;
 
 namespace HooksR
 {
@@ -71,6 +72,13 @@ namespace HooksR
         // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
         app.UseHsts();
       }
+
+      app.Use(async (context, next) =>
+      {
+        context.Items.Add(Consts.RequestStartedOn, DateTime.UtcNow);
+        await next();
+      });
+
       app.UseHttpsRedirection();
       app.UseStaticFiles();
 

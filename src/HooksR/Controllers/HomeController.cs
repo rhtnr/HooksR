@@ -38,9 +38,7 @@ namespace HooksR.Controllers
       }
       else
       {
-
-        var hash = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(d => d.Type == ClaimTypes.Hash).ToString();
-        
+        var hash = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(d => d.Type == ClaimTypes.Hash).ToString(); 
         user.Hash = hash;
         ViewBag.User = user;
       }

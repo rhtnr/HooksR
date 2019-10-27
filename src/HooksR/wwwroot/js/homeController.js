@@ -1,3 +1,8 @@
 ﻿app.controller('homeController', function ($scope) {
-    $scope.Message = "Hello To AngularJS";
-  });
+  $scope.Message = "Requests";
+  $scope.requests = [];
+
+  console.log("Starting connection");
+
+
+});

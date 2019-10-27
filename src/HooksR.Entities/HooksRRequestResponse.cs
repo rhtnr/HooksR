@@ -7,6 +7,6 @@ namespace HooksR.Entities
   public class HooksRRequestResponse
   {
     public WebRequest Request { get; set; }
-    public WebResponse Response { get; set; }
+    public User User { get; set; }
   }
 }

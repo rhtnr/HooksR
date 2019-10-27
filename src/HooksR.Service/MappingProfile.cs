@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using HooksR.DTO;
 using HooksR.Entities;
+using HooksR.Options.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Net.Http.Headers;
 using System;
@@ -17,18 +18,17 @@ namespace HooksR.Service
 
       CreateMap<User, UIPushUser>();
       CreateMap<HttpRequest, WebRequest>()
-        .ForMember(dest => dest.Headers, o => o.MapFrom(src => HeadersMapper(src)));
-      CreateMap<HttpResponse, WebResponse>()
-        .ForMember(dest => dest.Headers, o => o.MapFrom(src => HeadersMapper(src)));
+        .ForMember(dest => dest.Headers, o => o.MapFrom(src => HeadersMapper(src)))
+        .ForMember(dest => dest.Source, o => o.MapFrom(src => src.HttpContext.Connection.RemoteIpAddress))
+        .ForMember(dest => dest.TimeStamp, o => o.MapFrom(src => (DateTime)src.HttpContext.Items[Consts.RequestStartedOn]));
       CreateMap<HttpRequest, UIPushRequest>()
-        .ForMember(dest => dest.Headers, o => o.MapFrom(src => HeadersMapper(src)));
-      CreateMap<HttpResponse, UIPushResponse>()
-        .ForMember(dest => dest.Headers, o => o.MapFrom(src => HeadersMapper(src)));
-      CreateMap<WebRequest, UIPushRequest>();
-      CreateMap<WebResponse, UIPushResponse>();
+        .ForMember(dest => dest.Headers, o => o.MapFrom(src => HeadersMapper(src)))
+        .ForMember(dest => dest.Source, o => o.MapFrom(src => src.HttpContext.Connection.RemoteIpAddress.ToString()))
+        .ForMember(dest => dest.TimeStamp, o => o.MapFrom(src => (DateTime)src.HttpContext.Items[Consts.RequestStartedOn]));
+      CreateMap<WebRequest, UIPushRequest>()
+      .ForMember(dest => dest.Source, o => o.MapFrom(src => src.Source.ToString()));
       CreateMap<HttpContext, UIPushEvent>()
-        .ForMember(dest => dest.Request, o => o.MapFrom(src => src.Request))
-        .ForMember(dest => dest.Response, o => o.MapFrom(src => src.Response));
+        .ForMember(dest => dest.Request, o => o.MapFrom(src => src.Request));
 
     }
 
