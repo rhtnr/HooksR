@@ -23,13 +23,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HooksR.Session.Concrete", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HooksR.Entities", "src\HooksR.Entities\HooksR.Entities.csproj", "{5DFAA306-0044-4E57-94DE-006E88A63677}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HooksR.HubService", "src\HooksR.HubService\HooksR.HubService.csproj", "{CC0D95AF-C3E5-4912-887F-B8016695E9FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HooksR.HubService", "src\HooksR.HubService\HooksR.HubService.csproj", "{CC0D95AF-C3E5-4912-887F-B8016695E9FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HooksR.Service.Contracts", "src\HooksR.Service.Contracts\HooksR.Service.Contracts.csproj", "{0C4CBEB7-162A-4A7C-A84D-842AE7A0EF24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HooksR.Service.Contracts", "src\HooksR.Service.Contracts\HooksR.Service.Contracts.csproj", "{0C4CBEB7-162A-4A7C-A84D-842AE7A0EF24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HooksR.Service", "src\HooksR.Service\HooksR.Service.csproj", "{0F2BD8F3-2562-4600-99F9-E49F52BD70A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HooksR.Service", "src\HooksR.Service\HooksR.Service.csproj", "{0F2BD8F3-2562-4600-99F9-E49F52BD70A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HooksR.DTO", "src\HooksR.DTO\HooksR.DTO.csproj", "{EE3431D0-76F4-4900-BDB2-DDA85A640F7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HooksR.DTO", "src\HooksR.DTO\HooksR.DTO.csproj", "{EE3431D0-76F4-4900-BDB2-DDA85A640F7E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{AAA6F9F5-6AFA-422E-9583-0FD9FA68B6C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HooksR.UnitTest", "tests\HooksR.UnitTest\HooksR.UnitTest.csproj", "{AA4E17F6-86B7-4A0C-B7E9-F0CC6506EF2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +85,10 @@ Global
 		{EE3431D0-76F4-4900-BDB2-DDA85A640F7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE3431D0-76F4-4900-BDB2-DDA85A640F7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE3431D0-76F4-4900-BDB2-DDA85A640F7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA4E17F6-86B7-4A0C-B7E9-F0CC6506EF2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA4E17F6-86B7-4A0C-B7E9-F0CC6506EF2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA4E17F6-86B7-4A0C-B7E9-F0CC6506EF2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA4E17F6-86B7-4A0C-B7E9-F0CC6506EF2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +105,7 @@ Global
 		{0C4CBEB7-162A-4A7C-A84D-842AE7A0EF24} = {A121A8E8-2326-461F-8FA1-EA895A2F09D9}
 		{0F2BD8F3-2562-4600-99F9-E49F52BD70A6} = {387789E5-170B-4DE3-AC50-BB766499D702}
 		{EE3431D0-76F4-4900-BDB2-DDA85A640F7E} = {A121A8E8-2326-461F-8FA1-EA895A2F09D9}
+		{AA4E17F6-86B7-4A0C-B7E9-F0CC6506EF2C} = {AAA6F9F5-6AFA-422E-9583-0FD9FA68B6C4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DFEE30FB-4904-4FC4-A724-598F43135879}

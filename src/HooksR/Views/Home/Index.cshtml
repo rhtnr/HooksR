@@ -12,12 +12,21 @@
 <div ng-app="homeapp">
   <div id="controller" ng-controller="homeController">
     <h2>{{Message}}</h2>
-    <table class="table table-hover table-sm" ng-show="requests">
-      <tr class="table-light" ng-repeat="row in requests">
-        <td>{{requests.length - $index}}</td>
-        <td><span class="badge badge-pill badge-success">POST</span></td>
-        <td>{{row.request.timeStamp | date:'MMMM d yyyy - h:mm:ss.sss a' }}</td>
-      </tr>
+    <table class="table table-hover table-sm" ng-show="requests && requests.length > 0">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Method</th>
+          <th scope="col">Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-light" ng-repeat="row in requests">
+          <td>{{requests.length - $index}}</td>
+          <td><span class="badge badge-pill badge-success">POST</span></td>
+          <td>{{row.request.timeStamp | date:'MMMM d yyyy - h:mm:ss.sss a' }}</td>
+        </tr>
+      </tbody>
     </table>
 
   </div>

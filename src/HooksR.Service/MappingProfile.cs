@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 
 namespace HooksR.Service
 {
@@ -15,6 +16,11 @@ namespace HooksR.Service
   {
     public MappingProfile()
     {
+      JsonSerializerOptions jsonSerializerOptions = new JsonSerializerOptions
+      {
+        Converters = { new HttpHeaderConverter() },
+        WriteIndented = true
+      };
 
       CreateMap<User, UIPushUser>();
       CreateMap<HttpRequest, WebRequest>()
@@ -22,7 +28,10 @@ namespace HooksR.Service
         .ForMember(dest => dest.Source, o => o.MapFrom(src => src.HttpContext.Connection.RemoteIpAddress))
         .ForMember(dest => dest.TimeStamp, o => o.MapFrom(src => (DateTime)src.HttpContext.Items[Consts.RequestStartedOn]));
       CreateMap<HttpRequest, UIPushRequest>()
-        .ForMember(dest => dest.Headers, o => o.MapFrom(src => HeadersMapper(src)))
+        .ForMember(dest => dest.Headers, o => o.MapFrom(src =>
+        TryDeserializeHTTPHeadersJSON(
+          JsonSerializer.Serialize<List<KeyValuePair<string, IEnumerable<string>>>>(HeadersMapper(src), jsonSerializerOptions))))
+        
         .ForMember(dest => dest.Source, o => o.MapFrom(src => src.HttpContext.Connection.RemoteIpAddress.ToString()))
         .ForMember(dest => dest.TimeStamp, o => o.MapFrom(src => (DateTime)src.HttpContext.Items[Consts.RequestStartedOn]));
       CreateMap<WebRequest, UIPushRequest>()
@@ -30,6 +39,19 @@ namespace HooksR.Service
       CreateMap<HttpContext, UIPushEvent>()
         .ForMember(dest => dest.Request, o => o.MapFrom(src => src.Request));
 
+    }
+
+    private dynamic TryDeserializeHTTPHeadersJSON(String str)
+    {
+      try
+      {
+        return JsonSerializer.Deserialize<dynamic>(str);
+      }
+      catch (Exception ex)
+      {
+        
+      }
+      return str;
     }
 
     private List<KeyValuePair<String, IEnumerable<String>>> HeadersMapper(HttpRequest request)

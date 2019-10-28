@@ -55,6 +55,11 @@ namespace HooksR
       services.AddSignalR();
       services.AddControllersWithViews();
 
+      services.AddMvc()
+        .AddJsonOptions(options => {
+          options.JsonSerializerOptions.Converters.Add(new HttpHeaderConverter());
+        });
+
       services.AddAutoMapper(cfg => cfg.AddProfile<MappingProfile>(),
                                AppDomain.CurrentDomain.GetAssemblies());
     }
