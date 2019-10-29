@@ -47,7 +47,7 @@ namespace HooksR.Service
       {
         return JsonSerializer.Deserialize<dynamic>(str);
       }
-      catch (Exception ex)
+      catch
       {
         
       }

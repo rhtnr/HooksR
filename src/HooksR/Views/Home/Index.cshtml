@@ -23,7 +23,7 @@
       <tbody>
         <tr class="table-light" ng-repeat="row in requests">
           <td>{{requests.length - $index}}</td>
-          <td><span class="badge badge-pill badge-success">POST</span></td>
+          <td><span class="badge badge-pill badge-success">{{row.request.headers[":method"]}}</span></td>
           <td>{{row.request.timeStamp | date:'MMMM d yyyy - h:mm:ss.sss a' }}</td>
         </tr>
       </tbody>
