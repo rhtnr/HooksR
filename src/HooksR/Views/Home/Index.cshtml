@@ -10,32 +10,26 @@
   <p>User Hash :@user.Hash </p>
 }
 <div ng-app="homeapp">
-  <div id="controller" ng-controller="homeController">
+  <div id="controller" ng-init="init('@ViewBag.User.Hash')" ng-controller="homeController">
+    <input class="form-control" type="text" placeholder="{{userhash}}" readonly>
     <h2>{{Message}}</h2>
-    <table id="table_requests" ng-class="['table-hover', 'table-sm', 'table-requestsexpanded']" ng-show="requests && requests.length > 0">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Method</th>
-          <th scope="col">Time</th>
-          <th scope="col">Header</th>
-          <th scope="col">Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="table-light" ng-repeat-start="row in requests">
-          <td rowspan="{{row.request.headers | keysLength}}">{{requests.length - $index}}</td>
-          <td rowspan="{{row.request.headers | keysLength}}"><span class="badge badge-pill badge-success">{{row.request.headers[":method"]}}</span></td>
-          <td rowspan="{{row.request.headers | keysLength}}">{{row.request.timeStamp | date:'MMMM d - h:mm:ss.sss a' }}</td>
-          <td>{{getKeys(row.request.headers)[0]}}</td>
-          <td>{{getValues(row.request.headers)[0]}}</td>
-        </tr>
-        <tr ng-repeat-end ng-repeat="(headerkey, headervalue) in row.request.headers" ng-if="$index > 0">
-          <td>{{headerkey}}</td>
-          <td>{{headervalue}}</td>
-        </tr>
-      </tbody>
-    </table>
-
+    <div>
+      <table id="table_requests" ng-class="['table-hover', 'table-sm']" ng-show="requests && requests.length > 0">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Method</th>
+            <th scope="col">Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-light" ng-repeat="row in requests">
+            <td>{{requests.length - $index}}</td>
+            <td><span class="badge badge-pill badge-success">{{row.request.method}}</span></td>
+            <td>{{row.request.timeStamp | date:'MMMM d - h:mm:ss.sss a' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

@@ -33,12 +33,11 @@ namespace HooksR.Controllers
       if (!_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
       {
         await _session.SignInAsync(_httpContextAccessor);
-        user.Hash = "Not logged in!";
         return RedirectToAction();
       }
       else
       {
-        var hash = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(d => d.Type == ClaimTypes.Hash).ToString(); 
+        var hash = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(d => d.Type == ClaimTypes.Hash).Value.ToString(); 
         user.Hash = hash;
         ViewBag.User = user;
       }

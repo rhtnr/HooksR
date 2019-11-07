@@ -1,21 +1,29 @@
-﻿app.controller('homeController', function($scope) {
-    $scope.Message = "Requests";
-    $scope.requests = [];
+﻿app.controller('homeController', function ($scope) {
+  $scope.Message = "Requests";
+  $scope.userhash = null;
+  $scope.requests = [];
 
-    console.log("Starting connection");
+  console.log("Starting connection");
 
-    $scope.getKeys = function(obj) {
-        return Object.keys(obj);
-    };
+  $scope.init = function (userhash) {
+    console.log(userhash);
+    $scope.userhash = userhash;
+  };
 
-    $scope.getValues = function(obj) {
-        return Object.values(obj);
-    };
 
-    $scope.table_expand = function(table) {
-        console.log(table);
-        this.renderer.addClass(table, "table-requestsexpanded");
-    };
+
+  $scope.getKeys = function (obj) {
+    return Object.keys(obj);
+  };
+
+  $scope.getValues = function (obj) {
+    return Object.values(obj);
+  };
+
+  $scope.table_expand = function (table) {
+    console.log(table);
+    this.renderer.addClass(table, "table-requestsexpanded");
+  };
 
 
 });

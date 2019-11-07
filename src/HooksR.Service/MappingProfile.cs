@@ -90,7 +90,8 @@ namespace HooksR.Service
 
       foreach (var header in dictionary)
       {
-        list.Add(new KeyValuePair<string, IEnumerable<string>>(header.Key, header.Value));
+        if(!header.Key.StartsWith(":"))
+          list.Add(new KeyValuePair<string, IEnumerable<string>>(header.Key, header.Value));
       }
       return list;
     }

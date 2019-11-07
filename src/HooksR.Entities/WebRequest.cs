@@ -12,6 +12,10 @@ namespace HooksR.Entities
 
     public String Scheme { get; set;}
 
+    public String Method { get; set; }
+
+    public String Path { get; set; }
+
     public String Host { get; set; }
 
     public IPAddress Source { get; set; }
